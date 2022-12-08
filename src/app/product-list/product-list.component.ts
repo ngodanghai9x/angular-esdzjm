@@ -12,12 +12,15 @@ export class ProductListComponent {
 
   share(e: any) {
     console.log('🚀 ~ share ~ e', e);
-    window.alert('The product has been shared!');
+    // window.alert('The product has been shared!');
+    console.log('The product has been shared!');
   }
 
   onNotify(e: any) {
     console.log('🚀 ~ onNotify ~ e', e);
-    window.alert('You will be notified when the product goes on sale');
+    // window.alert('You will be notified when the product goes on sale');
+    console.log('You will be notified when the product goes on sale');
+    
   }
 }
 
