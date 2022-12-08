@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, OnChanges } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 
 import { CartService } from '../cart.service';
@@ -6,19 +6,22 @@ import { CartService } from '../cart.service';
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css']
+  styleUrls: ['./cart.component.css'],
 })
-export class CartComponent {
-  constructor(
-    private cartService: CartService,
-    private formBuilder: FormBuilder,
-  ) { }
+export class CartComponent implements OnInit, OnChanges {
+  constructor(private cartService: CartService, private formBuilder: FormBuilder) {}
 
   items = this.cartService.getItems();
   checkoutForm = this.formBuilder.group({
     name: '',
-    address: ''
+    address: '',
   });
+
+  ngOnChanges() {
+    console.log(CartComponent.name, 'ngOnChanges');
+  }
+
+  ngOnInit(): void {}
 
   onSubmit(): void {
     // Process checkout data here

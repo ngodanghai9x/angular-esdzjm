@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges } from '@angular/core';
 
 @Component({
   selector: 'app-top-bar',
   templateUrl: './top-bar.component.html',
   styleUrls: ['./top-bar.component.css']
 })
-export class TopBarComponent {
-
+export class TopBarComponent implements OnChanges {
+  ngOnChanges() {
+    console.log(TopBarComponent.name, 'ngOnChanges');
+  }
 }
 
 

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 
 import { products } from '../products';
 
@@ -7,8 +7,18 @@ import { products } from '../products';
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.css'],
 })
-export class ProductListComponent {
+export class ProductListComponent implements OnInit, OnChanges {
   products = products;
+
+  ngOnChanges() {
+    console.log(ProductListComponent.name, 'ngOnChanges');
+  }
+  ngOnInit(): void {
+    // setInterval(() => {
+    //   console.log('🚀 ~setInterval');
+    //   this.products = [...products];
+    // }, 2500);
+  }
 
   share(e: any) {
     console.log('🚀 ~ share ~ e', e);
@@ -20,7 +30,6 @@ export class ProductListComponent {
     console.log('🚀 ~ onNotify ~ e', e);
     // window.alert('You will be notified when the product goes on sale');
     console.log('You will be notified when the product goes on sale');
-    
   }
 }
 

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product, products } from '../products';
 import { CartService } from '../cart.service';
@@ -8,11 +8,15 @@ import { CartService } from '../cart.service';
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css'],
 })
-export class ProductDetailsComponent implements OnInit {
+export class ProductDetailsComponent implements OnInit, OnChanges {
   @Input() product?: Product;
-  
+
   constructor(private route: ActivatedRoute, private cartService: CartService) {}
-  
+
+  ngOnChanges() {
+    console.log(ProductDetailsComponent.name, 'ngOnChanges');
+  }
+
   ngOnInit(): void {
     // First get the product id from the current route.
     const routeParams = this.route.snapshot.paramMap;
